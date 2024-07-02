@@ -8,6 +8,9 @@ class Company {
 
   @IsNotEmpty()
   name:string;
+
+  @IsNotEmpty()
+  logo:string;
 }
 
 
@@ -51,4 +54,7 @@ export class CreateJobDto {
   @IsNotEmpty({message: "isActive not empty"})
   @IsBoolean({message: "isActive is format boolean"})
   isActive: boolean
+
+  @IsNotEmpty({message: "location not empty"})
+  location: string;
 }

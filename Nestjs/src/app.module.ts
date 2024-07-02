@@ -12,6 +12,8 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { softDeletePlugin } from 'soft-delete-plugin-mongoose'
 import { CompaniesModule } from './companies/companies.module';
 import { JobModule } from './job/job.module';
+import { FilesModule } from './files/files.module';
+import { ResumesModule } from './resumes/resumes.module';
 
 @Module({
   imports: [
@@ -32,7 +34,9 @@ import { JobModule } from './job/job.module';
     StatelessModule,
     AuthModule,
     CompaniesModule,
-    JobModule
+    JobModule,
+    FilesModule,
+    ResumesModule
   ],
   controllers: [AppController],
   providers: [AppService],

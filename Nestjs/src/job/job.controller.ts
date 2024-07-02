@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { JobService } from './job.service';
 import { CreateJobDto } from './dto/create-job.dto';
 import { UpdateJobDto } from './dto/update-job.dto';
-import { ResponseMessage, User } from '@/auth/decorator/customize';
+import { Public, ResponseMessage, User } from '@/auth/decorator/customize';
 import { IUser } from '@/users/users.interface';
 
 @Controller('job')
@@ -20,6 +20,7 @@ export class JobController {
   }
 
   @Get()
+  @Public()
   @ResponseMessage("Fetch List Company with paginate")
   async findAll(
     @Query("current") currentPage: string,
@@ -30,12 +31,14 @@ export class JobController {
   }
 
   @Get(':id')
+  @Public()
   @ResponseMessage('Fetch a job by id')
   findOne(@Param('id') id: string) {
     return this.jobService.findOne(id);
   }
 
   @Patch(':id')
+  @Public()
   @ResponseMessage('Update a job by id')
   update(@Param('id') id: string, @Body() updateJobDto: UpdateJobDto, @User() user:IUser) {
     return this.jobService.update(id, updateJobDto, user);
